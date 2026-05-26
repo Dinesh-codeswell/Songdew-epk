@@ -1,0 +1,83 @@
+@import "tailwindcss";
+
+@theme {
+  --color-songdew-blue: #007BFF;
+  --color-songdew-gray: #6C757D;
+  --color-songdew-red: #F44336;
+  --color-songdew-bg: #F9F9F9;
+  --color-songdew-text: #222222;
+  
+  --shadow-neumorphic: rgb(255,255,255) -5px -5px 10px 0px, rgba(216,218,225,0.7) 4px 5px 10px 0px;
+  
+  --font-heading: var(--font-heading);
+  --font-body: var(--font-body);
+
+  /* Pika Design Tokens */
+  --color-buttermilk-base: #ffedd2;
+  --color-inkwell-deep: #0d0d0d;
+  --color-carbon-panel: #1f1f1f;
+  --color-paper-white: #ffffff;
+  --color-ash-gray: #9e9e9e;
+  --color-chrome-edges: #e5e7eb;
+  --color-facebook-blue: #4267b2;
+  --color-discord-purple: #5865f2;
+  --color-google-yellow: #ffc107;
+
+  --font-pika-body: var(--font-pika-body);
+  --font-pika-display: var(--font-pika-display);
+
+  --text-pika-body-sm: 14px;
+  --text-pika-body-lg: 16px;
+  --text-pika-display: 32px;
+
+  --spacing-pika-8: 8px;
+  --spacing-pika-16: 16px;
+  --spacing-pika-20: 20px;
+  --spacing-pika-24: 24px;
+  --spacing-pika-28: 28px;
+  --spacing-pika-32: 32px;
+  --spacing-pika-56: 56px;
+  --spacing-pika-64: 64px;
+  --spacing-pika-80: 80px;
+
+  --radius-pika-md: 6px;
+  --radius-pika-lg: 10px;
+}
+
+:root {
+  --background: #F9F9F9;
+  --foreground: #222222;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-body), sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom scrollbar for an editorial feel */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #DDE3EA;
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #C4CDD5;
+}
+
+/* Focus utilities */
+*:focus-visible {
+  outline: 2px solid #007BFF;
+  outline-offset: 2px;
+}
