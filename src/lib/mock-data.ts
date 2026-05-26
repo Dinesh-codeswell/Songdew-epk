@@ -53,13 +53,27 @@ export const ARTIST_DATA = {
     author: "Arjun Kanungo"
   },
   performances: [
-    { name: "Sunburn Arena", venue: "Jio World Garden", city: "Mumbai", date: "Dec 12, 2024" },
-    { name: "NH7 Weekender", venue: "Vagator Beach", city: "Goa", date: "Dec 28, 2024" },
-    { name: "The Industry Tour", venue: "O2 Arena", city: "London", date: "Feb 15, 2025" },
+    { event: "Sunburn Arena", venue: "Jio World Garden", country: "India", date: "Dec 12, 2024" },
+    { event: "NH7 Weekender", venue: "Vagator Beach", country: "India", date: "Dec 28, 2024" },
+    { event: "The Industry Tour", venue: "O2 Arena", country: "UK", date: "Feb 15, 2025" },
   ],
   press: [
-    { name: "Rolling Stone", logoUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Rolling_Stone_logo.svg/2560px-Rolling_Stone_logo.svg.png" },
-    { name: "Forbes", logoUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Forbes_logo.svg/2560px-Forbes_logo.svg.png" },
+    { 
+      title: "Arjun Kanungo Redefines Indian Pop", 
+      description: "A visionary artist blending classical roots with modern beats.", 
+      source: "Rolling Stone", 
+      date: "Oct 12, 2023", 
+      link: "#",
+      logoUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Rolling_Stone_logo.svg/2560px-Rolling_Stone_logo.svg.png" 
+    },
+    { 
+      title: "Top 30 Under 30", 
+      description: "One of the most influential musicians in the country today.", 
+      source: "Forbes", 
+      date: "Jan 05, 2024", 
+      link: "#",
+      logoUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Forbes_logo.svg/2560px-Forbes_logo.svg.png" 
+    },
   ],
   contact: {
     email: "mgmt@arjunanungo.com",
@@ -67,8 +81,8 @@ export const ARTIST_DATA = {
     website: "arjunanungo.com"
   },
   assets: [
-    { name: "Press Photos.zip", size: "24.5 MB", type: "image" },
-    { name: "Stage Rider.pdf", size: "1.2 MB", type: "document" },
+    { name: "Press Photos.zip", size: "24.5 MB", type: "image", fileUrl: "#" },
+    { name: "Stage Rider.pdf", size: "1.2 MB", type: "document", fileUrl: "#" },
   ],
   businessEnquiries: [
     "Live Concerts",
