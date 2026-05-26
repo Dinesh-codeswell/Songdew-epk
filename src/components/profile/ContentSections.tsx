@@ -3,13 +3,13 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { StorySection } from "./sections/StorySection";
 import { MusicSection } from "./sections/MusicSection";
-import { PopularTracksSection } from "./sections/PopularTracksSection";
-import { VideoSection } from "./sections/VideoSection";
-import { PhotoSection } from "./sections/PhotoSection";
+import { GallerySection } from "./sections/GallerySection";
 import { PerformancesSection } from "./sections/PerformancesSection";
 import { AchievementsSection } from "./sections/AchievementsSection";
 import { PressSection } from "./sections/PressSection";
 import { AssetsSection } from "./sections/AssetsSection";
+import { QuoteSection } from "./sections/QuoteSection";
+import { BusinessEnquiriesSection } from "./sections/BusinessEnquiriesSection";
 
 interface ContentSectionsProps {
   activeTab: string;
@@ -29,9 +29,9 @@ export function ContentSections({ activeTab }: ContentSectionsProps) {
         >
           {activeTab === "Story" && <StorySection />}
           {activeTab === "Music" && <MusicSection />}
-          {activeTab === "Popular Tracks" && <PopularTracksSection />}
-          {activeTab === "Video" && <VideoSection />}
-          {activeTab === "Photo" && <PhotoSection />}
+          {activeTab === "Gallery" && <GallerySection />}
+          {activeTab === "Quote" && <QuoteSection />}
+          {activeTab === "Business Enquiries" && <BusinessEnquiriesSection />}
           {activeTab === "Live Performances" && <PerformancesSection />}
           {activeTab === "Achievements" && <AchievementsSection />}
           {activeTab === "In Press" && <PressSection />}

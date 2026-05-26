@@ -2,14 +2,13 @@
 
 import { motion } from "framer-motion";
 import { useArtist } from "@/context/ArtistContext";
-
 export const TABS = [
   "Story",
   "Achievements",
   "Music",
-  "Popular Tracks",
-  "Video",
-  "Photo",
+  "Gallery",
+  "Quote",
+  "Business Enquiries",
   "Live Performances",
   "In Press",
   "Assets",

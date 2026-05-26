@@ -69,5 +69,13 @@ export const ARTIST_DATA = {
   assets: [
     { name: "Press Photos.zip", size: "24.5 MB", type: "image" },
     { name: "Stage Rider.pdf", size: "1.2 MB", type: "document" },
+  ],
+  businessEnquiries: [
+    "Live Concerts",
+    "Corporate Events",
+    "Private Parties",
+    "Brand Collaborations",
+    "Music Production",
+    "Session Work"
   ]
 };
