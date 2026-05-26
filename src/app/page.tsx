@@ -1,15 +1,15 @@
 "use client";
 
-import { useState } from "react";
 import { Navbar } from "@/components/layout/Navbar";
 import { HeroHeader } from "@/components/profile/HeroHeader";
 import { Sidebar } from "@/components/profile/Sidebar";
-import { Tabs, TABS } from "@/components/profile/Tabs";
+import { Tabs } from "@/components/profile/Tabs";
 import { ContentSections } from "@/components/profile/ContentSections";
 import { motion } from "framer-motion";
+import { useArtist } from "@/context/ArtistContext";
 
 export default function ArtistProfilePage() {
-  const [activeTab, setActiveTab] = useState(TABS[0]);
+  const { activeTab } = useArtist();
 
   return (
     <>
@@ -26,7 +26,7 @@ export default function ArtistProfilePage() {
             <HeroHeader />
             
             <div className="mt-8">
-              <Tabs activeTab={activeTab} setActiveTab={setActiveTab} />
+              <Tabs />
             </div>
 
             <ContentSections activeTab={activeTab} />

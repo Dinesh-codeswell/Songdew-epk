@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useArtist } from "@/context/ArtistContext";
 
 export const TABS = [
   "Story",
@@ -14,12 +15,9 @@ export const TABS = [
   "Assets",
 ];
 
-interface TabsProps {
-  activeTab: string;
-  setActiveTab: (tab: string) => void;
-}
+export function Tabs() {
+  const { activeTab, setActiveTab } = useArtist();
 
-export function Tabs({ activeTab, setActiveTab }: TabsProps) {
   return (
     <div className="w-full h-[64px] border-b border-black/5 flex items-center gap-8 overflow-x-auto scrollbar-hide">
       {TABS.map((tab) => {

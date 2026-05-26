@@ -7,7 +7,7 @@ import { useArtist } from "@/context/ArtistContext";
 import { Modal } from "@/components/ui/modal";
 
 export function Sidebar() {
-  const { artist, isEditing, updateArtist } = useArtist();
+  const { artist, isEditing, updateArtist, profileStrength, setActiveTab } = useArtist();
   
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
   const [contactForm, setContactContactForm] = useState(artist.contact);
@@ -22,7 +22,6 @@ export function Sidebar() {
   };
 
   const handleListenOnSave = () => {
-    // Merge tempListenOn back into socials
     const otherSocials = artist.socials.filter(s => !["Spotify", "Apple Music", "YouTube", "SoundCloud"].includes(s.platform));
     updateArtist({ socials: [...otherSocials, ...tempListenOn] });
     setIsListenOnModalOpen(false);
@@ -33,6 +32,13 @@ export function Sidebar() {
   };
 
   const listenPlatforms = artist.socials.filter(s => ["Spotify", "Apple Music", "YouTube", "SoundCloud"].includes(s.platform));
+
+  const checklistItems = [
+    { text: "Add bio", done: !!(artist.story.excerpt && artist.story.excerpt.length > 50), tab: "Story" },
+    { text: "Connect social links", done: artist.socials.length >= 3, tab: "Story" }, 
+    { text: "Upload 3 high-res photos", done: artist.photos.length >= 3, tab: "Photo" },
+    { text: "Add a recent release", done: artist.releases.length >= 1, tab: "Music" },
+  ];
 
   return (
     <aside className="w-full lg:w-[320px] flex flex-col gap-6 flex-shrink-0">
@@ -89,8 +95,8 @@ export function Sidebar() {
                 rel="noreferrer"
                 className="flex items-center gap-2 p-2.5 rounded-[12px] bg-songdew-bg hover:bg-[#F2F6FA] border border-black/5 transition-all group"
               >
-                <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center shadow-sm">
-                  <MusicIcon platform={platform.platform} />
+                <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center shadow-sm text-songdew-blue">
+                   <Globe className="w-4 h-4" />
                 </div>
                 <span className="text-[13px] font-body font-medium text-songdew-text truncate">{platform.platform}</span>
               </a>
@@ -99,7 +105,7 @@ export function Sidebar() {
         </Card>
       </motion.div>
 
-      {/* Profile Strength */}
+      {/* Dynamic Profile Strength */}
       <motion.div
         initial={{ opacity: 0, x: 20 }}
         animate={{ opacity: 1, x: 0 }}
@@ -110,26 +116,29 @@ export function Sidebar() {
             Profile Strength
           </h3>
           <div className="w-full h-2 bg-black/5 rounded-full overflow-hidden mb-2">
-            <div className="h-full bg-songdew-blue w-[65%] rounded-full" />
+            <motion.div 
+              initial={{ width: 0 }}
+              animate={{ width: `${profileStrength}%` }}
+              className="h-full bg-songdew-blue rounded-full" 
+            />
           </div>
           <p className="text-sm font-body text-songdew-gray mb-4">
-            65% Complete — Add your latest release to reach 80%
+            {profileStrength}% Complete — {profileStrength < 100 ? "Keep building to get discovered" : "Your profile is elite!"}
           </p>
           <ul className="flex flex-col gap-3">
-            {[
-              { text: "Add bio", done: true },
-              { text: "Connect social links", done: true },
-              { text: "Upload 3 high-res photos", done: false },
-              { text: "Add a recent release", done: false },
-            ].map((task, i) => (
-              <li key={i} className="flex items-center gap-3 text-sm font-body">
-                <div className={`w-5 h-5 rounded-full flex items-center justify-center border ${task.done ? "bg-songdew-blue border-songdew-blue text-white" : "border-black/20 text-transparent"}`}>
+            {checklistItems.map((item, i) => (
+              <li 
+                key={i} 
+                onClick={() => setActiveTab(item.tab)}
+                className="flex items-center gap-3 text-sm font-body cursor-pointer group"
+              >
+                <div className={`w-5 h-5 rounded-full flex items-center justify-center border transition-colors ${item.done ? "bg-songdew-blue border-songdew-blue text-white" : "border-black/20 text-transparent group-hover:border-songdew-blue/50"}`}>
                   <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                   </svg>
                 </div>
-                <span className={task.done ? "text-songdew-text line-through opacity-60" : "text-songdew-text"}>
-                  {task.text}
+                <span className={`transition-all ${item.done ? "text-songdew-text line-through opacity-60" : "text-songdew-text group-hover:text-songdew-blue"}`}>
+                  {item.text}
                 </span>
               </li>
             ))}
@@ -237,7 +246,7 @@ export function Sidebar() {
           {["Spotify", "Apple Music", "YouTube", "SoundCloud"].map((platform) => (
             <div key={platform} className="flex flex-col gap-2">
               <label className="text-sm font-medium text-songdew-text flex items-center gap-2">
-                <MusicIcon platform={platform} /> {platform} URL
+                <Globe className="w-4 h-4 text-songdew-blue" /> {platform} URL
               </label>
               <input 
                 type="text"
@@ -259,6 +268,5 @@ export function Sidebar() {
 }
 
 function MusicIcon({ platform }: { platform: string }) {
-  // Simplistic mapper for platform icons
   return <Globe className="w-4 h-4 text-songdew-blue" />;
 }
