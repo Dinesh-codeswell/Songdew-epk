@@ -11,6 +11,8 @@ const buttonVariants = cva(
         default: "bg-songdew-blue text-white hover:bg-[#0069DB]",
         secondary:
           "bg-white border border-[#DDE3EA] text-songdew-blue hover:bg-[#F2F6FA]",
+        outline:
+          "bg-transparent border border-[#DDE3EA] text-songdew-text hover:bg-black/5",
         ghost: "hover:bg-black/5 text-songdew-gray hover:text-songdew-text",
         link: "text-songdew-blue underline-offset-4 hover:underline",
       },

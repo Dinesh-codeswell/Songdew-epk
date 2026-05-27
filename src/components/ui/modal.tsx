@@ -8,10 +8,11 @@ interface ModalProps {
   isOpen: boolean;
   onClose: () => void;
   title: string;
+  description?: string;
   children: React.ReactNode;
 }
 
-export function Modal({ isOpen, onClose, title, children }: ModalProps) {
+export function Modal({ isOpen, onClose, title, description, children }: ModalProps) {
   return (
     <AnimatePresence>
       {isOpen && (
@@ -30,11 +31,16 @@ export function Modal({ isOpen, onClose, title, children }: ModalProps) {
               exit={{ scale: 0.95, opacity: 0, y: 20 }}
               className="bg-white rounded-[24px] shadow-2xl w-full max-w-lg overflow-hidden pointer-events-auto"
             >
-              <div className="px-6 py-4 border-b border-black/5 flex items-center justify-between bg-songdew-bg/50">
-                <h3 className="font-heading font-bold text-xl text-songdew-text">{title}</h3>
-                <button onClick={onClose} className="p-2 hover:bg-black/5 rounded-full transition-colors">
-                  <X className="w-5 h-5 text-songdew-gray" />
-                </button>
+              <div className="px-6 py-4 border-b border-black/5 flex flex-col bg-songdew-bg/50">
+                <div className="flex items-center justify-between">
+                  <h3 className="font-heading font-bold text-xl text-songdew-text">{title}</h3>
+                  <button onClick={onClose} className="p-2 hover:bg-black/5 rounded-full transition-colors">
+                    <X className="w-5 h-5 text-songdew-gray" />
+                  </button>
+                </div>
+                {description && (
+                  <p className="text-sm text-songdew-gray mt-1">{description}</p>
+                )}
               </div>
               <div className="p-6 max-h-[80vh] overflow-y-auto">
                 {children}
