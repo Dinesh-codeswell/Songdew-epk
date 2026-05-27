@@ -8,9 +8,12 @@ import { useArtist } from "@/context/ArtistContext";
 import { FileUpload } from "@/components/ui/file-upload";
 import { Play, Video, Trash2, Plus, Image as ImageIcon } from "lucide-react";
 import { EmptyStateCard, InputField } from "./shared";
+import { SectionHeader } from "../SectionHeader";
 
 export function GallerySection() {
-  const { artist, isEditing, addSectionItem, removeSectionItem, showToast } = useArtist();
+  const { artist, isEditing, addSectionItem, removeSectionItem, showToast, toggleSectionVisibility } = useArtist();
+  
+  const isHidden = artist.hiddenSections.includes("Gallery");
   
   // Video State
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
@@ -44,6 +47,15 @@ export function GallerySection() {
 
   return (
     <div className="flex flex-col gap-12">
+      {isEditing && (
+        <SectionHeader 
+          title="Gallery Management"
+          isEditing={isEditing}
+          isHidden={isHidden}
+          onToggleVisibility={() => toggleSectionVisibility("Gallery")}
+          hideEdit={true}
+        />
+      )}
       
       {/* Videos Subsection */}
       <section>

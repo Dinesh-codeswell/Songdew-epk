@@ -1,15 +1,17 @@
 import React, { useState } from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Mail, Globe, Phone, ExternalLink, Pencil } from "lucide-react";
+import { Mail, Globe, Phone, ExternalLink, Pencil, Eye } from "lucide-react";
 import { motion } from "framer-motion";
 import { useArtist } from "@/context/ArtistContext";
 import { Modal } from "@/components/ui/modal";
+import { ManageSectionsModal } from "./ManageSectionsModal";
 
 export function Sidebar() {
   const { artist, isEditing, updateArtist, profileStrength, setActiveTab } = useArtist();
   
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
+  const [isManageModalOpen, setIsManageModalOpen] = useState(false);
   const [contactForm, setContactContactForm] = useState(artist.contact);
 
   const handleContactSubmit = (e: React.FormEvent) => {
@@ -179,6 +181,30 @@ export function Sidebar() {
           </div>
         </form>
       </Modal>
+
+      {/* Manage Sections Modal */}
+      {isEditing && (
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.6 }}
+          className="mt-2"
+        >
+          <Button 
+            onClick={() => setIsManageModalOpen(true)}
+            variant="outline" 
+            className="w-full border-songdew-blue text-songdew-blue hover:bg-songdew-blue/5 gap-2 font-semibold h-11"
+          >
+            <Eye className="w-4 h-4" />
+            Manage Sections
+          </Button>
+          
+          <ManageSectionsModal 
+            isOpen={isManageModalOpen} 
+            onClose={() => setIsManageModalOpen(false)} 
+          />
+        </motion.div>
+      )}
     </aside>
   );
 }

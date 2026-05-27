@@ -8,10 +8,14 @@ import { useArtist } from "@/context/ArtistContext";
 import { FileUpload } from "@/components/ui/file-upload";
 import { Plus, Trash2, ExternalLink } from "lucide-react";
 import { InputField } from "./shared";
+import { SectionHeader } from "../SectionHeader";
 
 export function PressSection() {
-  const { artist, isEditing, addSectionItem, removeSectionItem, showToast } = useArtist();
+  const { artist, isEditing, addSectionItem, removeSectionItem, showToast, toggleSectionVisibility } = useArtist();
   const [isModalOpen, setIsModalOpen] = useState(false);
+  
+  const isHidden = artist.hiddenSections.includes("In Press");
+
   const [newItem, setNewItem] = useState({ 
     title: "", 
     description: "", 
@@ -34,14 +38,20 @@ export function PressSection() {
 
   return (
     <div className="flex flex-col gap-8">
-      <div className="flex justify-between items-center px-1">
-        <h3 className="font-heading font-bold text-xl text-songdew-text">In Press</h3>
-        {isEditing && (
+      <SectionHeader 
+        title="In Press"
+        isEditing={isEditing}
+        isHidden={isHidden}
+        onToggleVisibility={() => toggleSectionVisibility("In Press")}
+        hideEdit={true}
+      />
+      {isEditing && (
+        <div className="flex justify-end -mt-4">
           <Button size="sm" variant="secondary" onClick={() => setIsModalOpen(true)} className="flex items-center gap-2">
             <Plus className="w-4 h-4" /> Add article
           </Button>
-        )}
-      </div>
+        </div>
+      )}
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {artist.press.map((p, i) => (

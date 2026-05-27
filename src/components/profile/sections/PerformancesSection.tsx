@@ -7,11 +7,14 @@ import { Modal } from "@/components/ui/modal";
 import { useArtist } from "@/context/ArtistContext";
 import { Plus, Trash2, MapPin, Calendar } from "lucide-react";
 import { InputField } from "./shared";
+import { SectionHeader } from "../SectionHeader";
 
 export function PerformancesSection() {
-  const { artist, isEditing, addSectionItem, removeSectionItem, showToast } = useArtist();
+  const { artist, isEditing, addSectionItem, removeSectionItem, showToast, toggleSectionVisibility } = useArtist();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [newItem, setNewItem] = useState({ event: "", country: "", venue: "", date: "" });
+
+  const isHidden = artist.hiddenSections.includes("Live Performances");
 
   const handleAdd = () => {
     if (!newItem.event.trim() || !newItem.country.trim() || !newItem.venue.trim() || !newItem.date.trim()) {
@@ -26,14 +29,20 @@ export function PerformancesSection() {
 
   return (
     <div className="flex flex-col gap-8">
-      <div className="flex justify-between items-center px-1">
-        <h3 className="font-heading font-bold text-xl text-songdew-text">Live Performances</h3>
-        {isEditing && (
+      <SectionHeader 
+        title="Live Performances"
+        isEditing={isEditing}
+        isHidden={isHidden}
+        onToggleVisibility={() => toggleSectionVisibility("Live Performances")}
+        hideEdit={true}
+      />
+      {isEditing && (
+        <div className="flex justify-end -mt-4">
           <Button size="sm" variant="secondary" onClick={() => setIsModalOpen(true)} className="flex items-center gap-2">
             <Plus className="w-4 h-4" /> Add event
           </Button>
-        )}
-      </div>
+        </div>
+      )}
 
       <div className="flex flex-col gap-4">
         {artist.performances.map((perf, i) => (

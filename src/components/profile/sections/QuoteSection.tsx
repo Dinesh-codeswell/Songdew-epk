@@ -5,13 +5,16 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Modal } from "@/components/ui/modal";
 import { useArtist } from "@/context/ArtistContext";
-import { Pencil, Quote as QuoteIcon } from "lucide-react";
+import { Quote as QuoteIcon } from "lucide-react";
 import { InputField } from "./shared";
+import { SectionHeader } from "../SectionHeader";
 
 export function QuoteSection() {
-  const { artist, isEditing, updateArtist, showToast } = useArtist();
+  const { artist, isEditing, updateArtist, showToast, toggleSectionVisibility } = useArtist();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [tempQuote, setTempQuote] = useState(artist.quote);
+  
+  const isHidden = artist.hiddenSections.includes("Quote");
 
   const handleSave = () => {
     if (!tempQuote.text.trim()) {
@@ -27,6 +30,20 @@ export function QuoteSection() {
 
   return (
     <Card className="p-12 relative border-none shadow-sm flex flex-col items-center text-center overflow-hidden">
+      {isEditing && (
+        <div className="absolute top-4 left-4 right-4 z-20">
+          <SectionHeader 
+            title=""
+            isEditing={isEditing}
+            isHidden={isHidden}
+            onToggleVisibility={() => toggleSectionVisibility("Quote")}
+            onEdit={() => {
+              setTempQuote(artist.quote);
+              setIsModalOpen(true);
+            }}
+          />
+        </div>
+      )}
       {/* Decorative Waveform Mockup */}
       <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-songdew-blue/5 to-transparent flex items-end justify-around px-12 gap-1 pointer-events-none">
         {[...Array(40)].map((_, i) => (
@@ -53,18 +70,6 @@ export function QuoteSection() {
           <div className="h-[1px] w-8 bg-songdew-blue/30" />
         </div>
       </div>
-
-      {isEditing && (
-        <button
-          onClick={() => {
-            setTempQuote(artist.quote);
-            setIsModalOpen(true);
-          }}
-          className="absolute top-4 right-4 p-2 hover:bg-black/5 rounded-full transition-colors text-songdew-blue"
-        >
-          <Pencil className="w-5 h-5" />
-        </button>
-      )}
 
       <Modal
         isOpen={isModalOpen}

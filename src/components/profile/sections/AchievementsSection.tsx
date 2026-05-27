@@ -7,11 +7,14 @@ import { Modal } from "@/components/ui/modal";
 import { useArtist } from "@/context/ArtistContext";
 import { Trophy, Disc, Activity, Plus, Trash2 } from "lucide-react";
 import { InputField } from "./shared";
+import { SectionHeader } from "../SectionHeader";
 
 export function AchievementsSection() {
-  const { artist, isEditing, addSectionItem, removeSectionItem, showToast } = useArtist();
+  const { artist, isEditing, addSectionItem, removeSectionItem, showToast, toggleSectionVisibility } = useArtist();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [newItem, setNewItem] = useState({ title: "", organization: "", icon: "trophy" });
+
+  const isHidden = artist.hiddenSections.includes("Achievements");
 
   const handleAdd = () => {
     if (!newItem.title.trim() || !newItem.organization.trim()) {
@@ -25,37 +28,48 @@ export function AchievementsSection() {
   };
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      {artist.achievements.map((ach, i) => (
-        <Card key={i} hoverLift className="p-6 flex items-start gap-4 relative group border-none shadow-sm">
-          <div className="w-12 h-12 rounded-full bg-[#F2F6FA] flex items-center justify-center flex-shrink-0">
-            {ach.icon === "trophy" && <Trophy className="w-5 h-5 text-songdew-blue" />}
-            {ach.icon === "disc" && <Disc className="w-5 h-5 text-songdew-blue" />}
-            {ach.icon === "activity" && <Activity className="w-5 h-5 text-songdew-blue" />}
-          </div>
-          <div className="pr-6 text-left">
-            <h4 className="font-heading font-semibold text-[18px] text-songdew-text leading-tight">{ach.title}</h4>
-            <p className="font-body text-[14px] text-songdew-gray mt-1">{ach.organization}</p>
-          </div>
-          {isEditing && (
-            <button 
-              onClick={() => removeSectionItem("achievements", i)}
-              className="absolute top-2 right-2 p-2 text-red-500 hover:bg-red-50 rounded-full transition-colors opacity-0 group-hover:opacity-100"
-            >
-              <Trash2 className="w-4 h-4" />
-            </button>
-          )}
-        </Card>
-      ))}
+    <div className="flex flex-col gap-6">
       {isEditing && (
-        <button 
-          onClick={() => setIsModalOpen(true)}
-          className="p-6 rounded-[16px] border border-dashed border-black/10 flex flex-col items-center justify-center gap-2 hover:bg-black/5 transition-colors min-h-[100px]"
-        >
-          <Plus className="w-6 h-6 text-songdew-gray" />
-          <span className="font-body text-sm text-songdew-gray font-medium">Add Achievement</span>
-        </button>
+        <SectionHeader 
+          title="Achievements Management"
+          isEditing={isEditing}
+          isHidden={isHidden}
+          onToggleVisibility={() => toggleSectionVisibility("Achievements")}
+          hideEdit={true}
+        />
       )}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {artist.achievements.map((ach, i) => (
+          <Card key={i} hoverLift className="p-6 flex items-start gap-4 relative group border-none shadow-sm">
+            <div className="w-12 h-12 rounded-full bg-[#F2F6FA] flex items-center justify-center flex-shrink-0">
+              {ach.icon === "trophy" && <Trophy className="w-5 h-5 text-songdew-blue" />}
+              {ach.icon === "disc" && <Disc className="w-5 h-5 text-songdew-blue" />}
+              {ach.icon === "activity" && <Activity className="w-5 h-5 text-songdew-blue" />}
+            </div>
+            <div className="pr-6 text-left">
+              <h4 className="font-heading font-semibold text-[18px] text-songdew-text leading-tight">{ach.title}</h4>
+              <p className="font-body text-[14px] text-songdew-gray mt-1">{ach.organization}</p>
+            </div>
+            {isEditing && (
+              <button 
+                onClick={() => removeSectionItem("achievements", i)}
+                className="absolute top-2 right-2 p-2 text-red-500 hover:bg-red-50 rounded-full transition-colors opacity-0 group-hover:opacity-100"
+              >
+                <Trash2 className="w-4 h-4" />
+              </button>
+            )}
+          </Card>
+        ))}
+        {isEditing && (
+          <button 
+            onClick={() => setIsModalOpen(true)}
+            className="p-6 rounded-[16px] border border-dashed border-black/10 flex flex-col items-center justify-center gap-2 hover:bg-black/5 transition-colors min-h-[100px]"
+          >
+            <Plus className="w-6 h-6 text-songdew-gray" />
+            <span className="font-body text-sm text-songdew-gray font-medium">Add Achievement</span>
+          </button>
+        )}
+      </div>
 
       <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} title="Add Achievement">
         <div className="flex flex-col gap-4">

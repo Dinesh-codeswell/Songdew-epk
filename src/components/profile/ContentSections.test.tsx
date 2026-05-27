@@ -15,6 +15,7 @@ describe('ContentSections - StorySection', () => {
     story: {
       excerpt: 'This is a test bio.',
     },
+    hiddenSections: [],
   };
 
   const mockUpdateArtist = vi.fn();
@@ -28,6 +29,7 @@ describe('ContentSections - StorySection', () => {
       artist: mockArtist,
       isEditing: false,
       updateArtist: mockUpdateArtist,
+      showToast: vi.fn(),
     });
 
     render(<ContentSections activeTab="Story" />);
@@ -42,6 +44,7 @@ describe('ContentSections - StorySection', () => {
       artist: mockArtist,
       isEditing: false,
       updateArtist: mockUpdateArtist,
+      showToast: vi.fn(),
     });
 
     const { rerender } = render(<ContentSections activeTab="Story" />);
@@ -54,6 +57,7 @@ describe('ContentSections - StorySection', () => {
       artist: mockArtist,
       isEditing: true,
       updateArtist: mockUpdateArtist,
+      showToast: vi.fn(),
     });
 
     rerender(<ContentSections activeTab="Story" />);
@@ -67,6 +71,7 @@ describe('ContentSections - StorySection', () => {
       artist: mockArtist,
       isEditing: true,
       updateArtist: mockUpdateArtist,
+      showToast: vi.fn(),
     });
 
     render(<ContentSections activeTab="Story" />);
@@ -77,13 +82,64 @@ describe('ContentSections - StorySection', () => {
     expect(screen.getByText('Edit Artist Bio')).toBeInTheDocument();
     
     const textarea = screen.getByDisplayValue('This is a test bio.');
-    fireEvent.change(textarea, { target: { value: 'This is a new bio.' } });
+    fireEvent.change(textarea, { target: { value: 'This is a new bio that is long enough.' } });
     
     const saveButton = screen.getByText('Save Changes');
     fireEvent.click(saveButton);
 
     expect(mockUpdateArtist).toHaveBeenCalledWith({
-      story: { excerpt: 'This is a new bio.' }
+      story: { excerpt: 'This is a new bio that is long enough.' }
     });
+  });
+
+  it('applies grayscale and opacity styles when section is hidden in edit mode', () => {
+    (useArtist as any).mockReturnValue({
+      artist: {
+        ...mockArtist,
+        hiddenSections: ['Story'],
+      },
+      isEditing: true,
+      updateArtist: mockUpdateArtist,
+      showToast: vi.fn(),
+    });
+
+    const { container } = render(<ContentSections activeTab="Story" />);
+    
+    // The wrapper div should have these classes
+    const wrapper = container.querySelector('.grayscale.opacity-50');
+    expect(wrapper).toBeInTheDocument();
+  });
+
+  it('does not apply grayscale and opacity styles when section is visible in edit mode', () => {
+    (useArtist as any).mockReturnValue({
+      artist: {
+        ...mockArtist,
+        hiddenSections: [],
+      },
+      isEditing: true,
+      updateArtist: mockUpdateArtist,
+      showToast: vi.fn(),
+    });
+
+    const { container } = render(<ContentSections activeTab="Story" />);
+    
+    const wrapper = container.querySelector('.grayscale.opacity-50');
+    expect(wrapper).not.toBeInTheDocument();
+  });
+
+  it('does not render at all when section is hidden and not in edit mode', () => {
+    (useArtist as any).mockReturnValue({
+      artist: {
+        ...mockArtist,
+        hiddenSections: ['Story'],
+      },
+      isEditing: false,
+      updateArtist: mockUpdateArtist,
+      showToast: vi.fn(),
+    });
+
+    const { container } = render(<ContentSections activeTab="Story" />);
+    
+    expect(container.firstChild).toBeNull();
   });
 });

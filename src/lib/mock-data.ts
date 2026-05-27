@@ -91,5 +91,6 @@ export const ARTIST_DATA = {
     "Brand Collaborations",
     "Music Production",
     "Session Work"
-  ]
+  ],
+  hiddenSections: [] as string[]
 };

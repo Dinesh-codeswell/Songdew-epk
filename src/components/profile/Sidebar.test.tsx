@@ -17,6 +17,11 @@ describe('Sidebar', () => {
       phone: '+1 234 567 890',
       website: 'www.testartist.com',
     },
+    story: { excerpt: 'Initial bio text that is long enough to be valid.' },
+    socials: [],
+    photos: [],
+    releases: [],
+    hiddenSections: [],
   };
 
   const mockUpdateArtist = vi.fn();

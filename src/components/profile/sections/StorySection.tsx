@@ -5,12 +5,14 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Modal } from "@/components/ui/modal";
 import { useArtist } from "@/context/ArtistContext";
-import { Pencil } from "lucide-react";
+import { SectionHeader } from "../SectionHeader";
 
 export function StorySection() {
-  const { artist, isEditing, updateArtist, showToast } = useArtist();
+  const { artist, isEditing, updateArtist, showToast, toggleSectionVisibility } = useArtist();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [tempBio, setTempBio] = useState(artist.story.excerpt);
+  
+  const isHidden = artist.hiddenSections.includes("Story");
 
   const handleSave = () => {
     if (tempBio.length < 20) {
@@ -26,21 +28,16 @@ export function StorySection() {
 
   return (
     <Card className="p-8 relative border-none shadow-sm">
-      <div className="flex justify-between items-start mb-4">
-        <h3 className="font-heading text-2xl font-bold text-songdew-text">About {artist.name}</h3>
-        {isEditing && (
-          <button
-            onClick={() => {
-              setTempBio(artist.story.excerpt);
-              setIsModalOpen(true);
-            }}
-            aria-label="Edit Bio"
-            className="p-2 hover:bg-black/5 rounded-full transition-colors text-songdew-blue"
-          >
-            <Pencil className="w-5 h-5" />
-          </button>
-        )}
-      </div>
+      <SectionHeader 
+        title={`About ${artist.name}`}
+        isEditing={isEditing}
+        isHidden={isHidden}
+        onToggleVisibility={() => toggleSectionVisibility("Story")}
+        onEdit={() => {
+          setTempBio(artist.story.excerpt);
+          setIsModalOpen(true);
+        }}
+      />
       <p className="font-body text-[16px] text-songdew-text/80 leading-relaxed max-w-3xl">
         {artist.story.excerpt}
       </p>

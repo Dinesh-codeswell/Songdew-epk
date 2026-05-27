@@ -8,9 +8,12 @@ import { useArtist } from "@/context/ArtistContext";
 import { FileUpload } from "@/components/ui/file-upload";
 import { Play, Music, Trash2, Plus } from "lucide-react";
 import { EmptyStateCard, InputField } from "./shared";
+import { SectionHeader } from "../SectionHeader";
 
 export function MusicSection() {
-  const { artist, isEditing, addSectionItem, removeSectionItem, showToast } = useArtist();
+  const { artist, isEditing, addSectionItem, removeSectionItem, showToast, toggleSectionVisibility } = useArtist();
+  
+  const isHidden = artist.hiddenSections.includes("Music");
   
   // State for Music Releases Modal
   const [isReleaseModalOpen, setIsReleaseModalOpen] = useState(false);
@@ -48,6 +51,15 @@ export function MusicSection() {
 
   return (
     <div className="flex flex-col gap-12">
+      {isEditing && (
+        <SectionHeader 
+          title="Music Management"
+          isEditing={isEditing}
+          isHidden={isHidden}
+          onToggleVisibility={() => toggleSectionVisibility("Music")}
+          hideEdit={true}
+        />
+      )}
       
       {/* Popular Tracks Subsection */}
       <section>

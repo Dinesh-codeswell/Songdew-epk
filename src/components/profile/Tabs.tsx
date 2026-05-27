@@ -2,6 +2,8 @@
 
 import { motion } from "framer-motion";
 import { useArtist } from "@/context/ArtistContext";
+import { EyeOff } from "lucide-react";
+
 export const TABS = [
   "Story",
   "Achievements",
@@ -15,21 +17,34 @@ export const TABS = [
 ];
 
 export function Tabs() {
-  const { activeTab, setActiveTab } = useArtist();
+  const { activeTab, setActiveTab, isEditing, artist } = useArtist();
+
+  const visibleTabs = isEditing 
+    ? TABS 
+    : TABS.filter(tab => !artist.hiddenSections.includes(tab));
 
   return (
     <div className="w-full h-[64px] border-b border-black/5 flex items-center gap-8 overflow-x-auto scrollbar-hide">
-      {TABS.map((tab) => {
+      {visibleTabs.map((tab) => {
         const isActive = activeTab === tab;
+        const isHidden = artist.hiddenSections.includes(tab);
+
         return (
           <button
             key={tab}
             onClick={() => setActiveTab(tab)}
-            className={`relative h-full px-2 font-heading font-medium text-[16px] whitespace-nowrap transition-colors ${
+            className={`relative h-full px-2 font-heading font-medium text-[16px] whitespace-nowrap transition-colors flex items-center gap-2 ${
               isActive ? "text-songdew-blue" : "text-songdew-gray hover:text-songdew-text"
             }`}
           >
-            {tab}
+            <span>{tab}</span>
+            {isEditing && isHidden && (
+              <EyeOff 
+                size={14} 
+                className="text-songdew-gray/60" 
+                aria-label="hidden"
+              />
+            )}
             {isActive && (
               <motion.div
                 layoutId="activeTabIndicator"

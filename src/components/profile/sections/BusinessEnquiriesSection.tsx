@@ -7,11 +7,14 @@ import { Modal } from "@/components/ui/modal";
 import { useArtist } from "@/context/ArtistContext";
 import { CheckCircle2, Plus, Trash2, Briefcase } from "lucide-react";
 import { InputField } from "./shared";
+import { SectionHeader } from "../SectionHeader";
 
 export function BusinessEnquiriesSection() {
-  const { artist, isEditing, addSectionItem, removeSectionItem, showToast } = useArtist();
+  const { artist, isEditing, addSectionItem, removeSectionItem, showToast, toggleSectionVisibility } = useArtist();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [newItem, setNewItem] = useState("");
+
+  const isHidden = artist.hiddenSections.includes("Business Enquiries");
 
   const handleAdd = () => {
     if (!newItem.trim()) {
@@ -28,6 +31,15 @@ export function BusinessEnquiriesSection() {
 
   return (
     <div className="flex flex-col gap-6">
+      {isEditing && (
+        <SectionHeader 
+          title="Business Management"
+          isEditing={isEditing}
+          isHidden={isHidden}
+          onToggleVisibility={() => toggleSectionVisibility("Business Enquiries")}
+          hideEdit={true}
+        />
+      )}
       <Card className="p-8 border-none shadow-sm">
         <div className="flex justify-between items-center mb-8">
           <div className="flex items-center gap-3">

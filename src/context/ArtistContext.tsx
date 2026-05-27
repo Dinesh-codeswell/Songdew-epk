@@ -15,6 +15,7 @@ interface ArtistContextType {
   updateSectionItem: (section: keyof ArtistData, index: number, item: any) => void;
   addSectionItem: (section: keyof ArtistData, item: any) => void;
   removeSectionItem: (section: keyof ArtistData, index: number) => void;
+  toggleSectionVisibility: (sectionName: string) => void;
   profileStrength: number;
   toast: { message: string; type: 'success' | 'error' | null };
   showToast: (message: string, type: 'success' | 'error') => void;
@@ -89,6 +90,20 @@ export function ArtistProvider({ children }: { children: ReactNode }) {
     showToast("Item removed", "success");
   };
 
+  const toggleSectionVisibility = (sectionName: string) => {
+    let isNowHidden = false;
+    setArtist(prev => {
+      const isHidden = prev.hiddenSections.includes(sectionName);
+      isNowHidden = !isHidden;
+      const newHiddenSections = isHidden
+        ? prev.hiddenSections.filter(s => s !== sectionName)
+        : [...prev.hiddenSections, sectionName];
+      
+      return { ...prev, hiddenSections: newHiddenSections };
+    });
+    showToast(`Section ${isNowHidden ? 'hidden' : 'visible'}`, "success");
+  };
+
   const showToast = (message: string, type: 'success' | 'error') => {
     setToast({ message, type });
     setTimeout(() => setToast({ message: '', type: null }), 3000);
@@ -118,6 +133,7 @@ export function ArtistProvider({ children }: { children: ReactNode }) {
       updateSectionItem, 
       addSectionItem,
       removeSectionItem,
+      toggleSectionVisibility,
       profileStrength: calculateProfileStrength(),
       toast,
       showToast

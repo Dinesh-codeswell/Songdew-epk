@@ -43,8 +43,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${outfit.variable} ${poppins.variable} ${inter.variable} ${interBlack.variable}`}>
-      <body className="antialiased min-h-[100dvh] flex flex-col bg-songdew-bg">
+    <html lang="en" suppressHydrationWarning className={`${outfit.variable} ${poppins.variable} ${inter.variable} ${interBlack.variable}`}>
+      <body suppressHydrationWarning className="antialiased min-h-[100dvh] flex flex-col bg-songdew-bg">
         <ArtistProvider>
           {children}
         </ArtistProvider>

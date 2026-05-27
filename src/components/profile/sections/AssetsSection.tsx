@@ -8,11 +8,14 @@ import { useArtist } from "@/context/ArtistContext";
 import { FileUpload } from "@/components/ui/file-upload";
 import { Plus, Trash2, Download, Image as ImageIcon, FileText } from "lucide-react";
 import { InputField } from "./shared";
+import { SectionHeader } from "../SectionHeader";
 
 export function AssetsSection() {
-  const { artist, isEditing, addSectionItem, removeSectionItem, showToast } = useArtist();
+  const { artist, isEditing, addSectionItem, removeSectionItem, showToast, toggleSectionVisibility } = useArtist();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [newItem, setNewItem] = useState({ name: "", size: "", type: "image", fileUrl: "" });
+
+  const isHidden = artist.hiddenSections.includes("Assets");
 
   const handleAdd = () => {
     if (!newItem.name.trim() || !newItem.fileUrl) {
@@ -28,41 +31,52 @@ export function AssetsSection() {
   const assets = artist.assets || [];
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      {assets.map((asset: any, i: number) => (
-        <Card key={i} hoverLift className="p-6 flex items-center gap-4 relative group border-none shadow-sm">
-          <div className="w-12 h-12 rounded-[12px] bg-[#F2F6FA] flex items-center justify-center flex-shrink-0">
-            {asset.type === "image" ? <ImageIcon className="w-5 h-5 text-songdew-blue" /> : <FileText className="w-5 h-5 text-songdew-blue" />}
-          </div>
-          <div className="flex-1 overflow-hidden text-left">
-            <h4 className="font-heading font-semibold text-[16px] text-songdew-text truncate">{asset.name}</h4>
-            <p className="font-body text-[13px] text-songdew-gray mt-0.5">{asset.size}</p>
-          </div>
-          <div className="flex items-center gap-2">
-            <button className="w-8 h-8 rounded-full hover:bg-black/5 flex items-center justify-center text-songdew-gray hover:text-songdew-blue transition-colors">
-              <Download className="w-4 h-4" />
-            </button>
-            {isEditing && (
-              <button 
-                onClick={() => removeSectionItem("assets", i)}
-                className="p-2 text-red-500 hover:bg-red-50 rounded-full transition-colors opacity-0 group-hover:opacity-100"
-              >
-                <Trash2 className="w-4 h-4" />
-              </button>
-            )}
-          </div>
-        </Card>
-      ))}
-      
+    <div className="flex flex-col gap-6">
       {isEditing && (
-        <button 
-          onClick={() => setIsModalOpen(true)}
-          className="p-6 rounded-[16px] border border-dashed border-black/10 flex flex-col items-center justify-center gap-2 hover:bg-black/5 transition-colors min-h-[88px]"
-        >
-          <Plus className="w-6 h-6 text-songdew-gray" />
-          <span className="font-body text-sm text-songdew-gray font-medium">Add Asset</span>
-        </button>
+        <SectionHeader 
+          title="Assets Management"
+          isEditing={isEditing}
+          isHidden={isHidden}
+          onToggleVisibility={() => toggleSectionVisibility("Assets")}
+          hideEdit={true}
+        />
       )}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {assets.map((asset: any, i: number) => (
+          <Card key={i} hoverLift className="p-6 flex items-center gap-4 relative group border-none shadow-sm">
+            <div className="w-12 h-12 rounded-[12px] bg-[#F2F6FA] flex items-center justify-center flex-shrink-0">
+              {asset.type === "image" ? <ImageIcon className="w-5 h-5 text-songdew-blue" /> : <FileText className="w-5 h-5 text-songdew-blue" />}
+            </div>
+            <div className="flex-1 overflow-hidden text-left">
+              <h4 className="font-heading font-semibold text-[16px] text-songdew-text truncate">{asset.name}</h4>
+              <p className="font-body text-[13px] text-songdew-gray mt-0.5">{asset.size}</p>
+            </div>
+            <div className="flex items-center gap-2">
+              <button className="w-8 h-8 rounded-full hover:bg-black/5 flex items-center justify-center text-songdew-gray hover:text-songdew-blue transition-colors">
+                <Download className="w-4 h-4" />
+              </button>
+              {isEditing && (
+                <button 
+                  onClick={() => removeSectionItem("assets", i)}
+                  className="p-2 text-red-500 hover:bg-red-50 rounded-full transition-colors opacity-0 group-hover:opacity-100"
+                >
+                  <Trash2 className="w-4 h-4" />
+                </button>
+              )}
+            </div>
+          </Card>
+        ))}
+        
+        {isEditing && (
+          <button 
+            onClick={() => setIsModalOpen(true)}
+            className="p-6 rounded-[16px] border border-dashed border-black/10 flex flex-col items-center justify-center gap-2 hover:bg-black/5 transition-colors min-h-[88px]"
+          >
+            <Plus className="w-6 h-6 text-songdew-gray" />
+            <span className="font-body text-sm text-songdew-gray font-medium">Add Asset</span>
+          </button>
+        )}
+      </div>
 
       <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} title="Add Asset">
         <div className="flex flex-col gap-5">
