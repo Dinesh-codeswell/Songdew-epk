@@ -36,7 +36,12 @@ export function ArtistProvider({ children }: { children: ReactNode }) {
     const savedData = localStorage.getItem(STORAGE_KEY);
     if (savedData) {
       try {
-        setArtist(JSON.parse(savedData));
+        const parsed = JSON.parse(savedData);
+        // Ensure hiddenSections exists
+        if (!parsed.hiddenSections) {
+          parsed.hiddenSections = [];
+        }
+        setArtist(parsed);
       } catch (e) {
         console.error("Failed to parse saved artist data", e);
       }
@@ -93,11 +98,12 @@ export function ArtistProvider({ children }: { children: ReactNode }) {
   const toggleSectionVisibility = (sectionName: string) => {
     let isNowHidden = false;
     setArtist(prev => {
-      const isHidden = prev.hiddenSections.includes(sectionName);
+      const hiddenSections = prev.hiddenSections || [];
+      const isHidden = hiddenSections.includes(sectionName);
       isNowHidden = !isHidden;
       const newHiddenSections = isHidden
-        ? prev.hiddenSections.filter(s => s !== sectionName)
-        : [...prev.hiddenSections, sectionName];
+        ? hiddenSections.filter(s => s !== sectionName)
+        : [...hiddenSections, sectionName];
       
       return { ...prev, hiddenSections: newHiddenSections };
     });

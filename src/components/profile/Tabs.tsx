@@ -18,16 +18,17 @@ export const TABS = [
 
 export function Tabs() {
   const { activeTab, setActiveTab, isEditing, artist } = useArtist();
+  const hiddenSections = artist.hiddenSections || [];
 
   const visibleTabs = isEditing 
     ? TABS 
-    : TABS.filter(tab => !artist.hiddenSections.includes(tab));
+    : TABS.filter(tab => !hiddenSections.includes(tab));
 
   return (
     <div className="w-full h-[64px] border-b border-black/5 flex items-center gap-8 overflow-x-auto scrollbar-hide">
       {visibleTabs.map((tab) => {
         const isActive = activeTab === tab;
-        const isHidden = artist.hiddenSections.includes(tab);
+        const isHidden = hiddenSections.includes(tab);
 
         return (
           <button

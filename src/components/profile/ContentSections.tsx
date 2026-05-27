@@ -18,9 +18,10 @@ interface ContentSectionsProps {
 
 export function ContentSections({ activeTab }: ContentSectionsProps) {
   const { artist, isEditing } = useArtist();
+  const hiddenSections = artist.hiddenSections || [];
 
   if (isEditing) {
-    const isHidden = artist.hiddenSections.includes(activeTab);
+    const isHidden = hiddenSections.includes(activeTab);
     return (
       <div className="w-full mt-8 relative min-h-[400px]">
         <AnimatePresence mode="wait">
@@ -63,7 +64,7 @@ export function ContentSections({ activeTab }: ContentSectionsProps) {
   return (
     <div className="w-full mt-8 flex flex-col gap-8">
       {sections.map((section) => {
-        if (artist.hiddenSections.includes(section.name)) return null;
+        if (hiddenSections.includes(section.name)) return null;
         return (
           <motion.div
             key={section.name}
