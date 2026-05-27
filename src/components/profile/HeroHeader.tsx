@@ -65,7 +65,7 @@ export function HeroHeader() {
   return (
     <div className="w-full flex flex-col">
       {/* Banner */}
-      <div className="w-full h-[220px] rounded-[20px] overflow-hidden relative group/banner">
+      <div className="w-full h-[180px] sm:h-[220px] md:h-[260px] lg:h-[300px] rounded-[20px] overflow-hidden relative group/banner">
         <img 
           src={artist.bannerUrl} 
           alt="Artist Banner" 
@@ -89,14 +89,14 @@ export function HeroHeader() {
       </div>
 
       {/* Profile Info Area */}
-      <div className="px-8 flex flex-col md:flex-row gap-6 relative">
+      <div className="px-4 sm:px-8 flex flex-col md:flex-row gap-6 relative">
         {/* Avatar */}
         <motion.div 
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          className="relative -mt-[60px] flex-shrink-0"
+          className="relative -mt-[50px] sm:-mt-[60px] flex-shrink-0"
         >
-          <div className="w-[120px] h-[120px] rounded-[24px] overflow-hidden border-[6px] border-songdew-bg bg-white shadow-lg relative z-10 group/avatar">
+          <div className="w-[100px] h-[100px] sm:w-[120px] sm:h-[120px] rounded-[24px] overflow-hidden border-[4px] sm:border-[6px] border-songdew-bg bg-white shadow-lg relative z-10 group/avatar">
             <img 
               src={artist.avatarUrl} 
               alt={artist.name}
@@ -119,7 +119,7 @@ export function HeroHeader() {
         </motion.div>
 
         {/* Text Details */}
-        <div className="pt-4 flex flex-col md:flex-row justify-between w-full gap-6">
+        <div className="pt-2 sm:pt-4 flex flex-col md:flex-row justify-between w-full gap-4 md:gap-6">
           <motion.div 
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
@@ -127,12 +127,12 @@ export function HeroHeader() {
             className="flex flex-col relative group/info"
           >
             <div className="flex items-center gap-3">
-              <h1 className="font-heading font-bold text-[42px] leading-tight text-songdew-text tracking-tight">
+              <h1 className="font-heading font-bold text-[clamp(1.75rem,5vw,2.625rem)] leading-tight text-songdew-text tracking-tight">
                 {artist.name}
               </h1>
               {artist.verified && (
-                <div className="w-7 h-7 bg-songdew-blue rounded-full flex items-center justify-center">
-                  <BadgeCheck className="w-4 h-4 text-white" />
+                <div className="w-6 h-6 md:w-7 md:h-7 bg-songdew-blue rounded-full flex items-center justify-center flex-shrink-0">
+                  <BadgeCheck className="w-3.5 h-3.5 md:w-4 h-4 text-white" />
                 </div>
               )}
               {isEditing && (

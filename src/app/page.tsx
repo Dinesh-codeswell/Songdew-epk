@@ -7,6 +7,7 @@ import { Tabs } from "@/components/profile/Tabs";
 import { ContentSections } from "@/components/profile/ContentSections";
 import { motion } from "framer-motion";
 import { useArtist } from "@/context/ArtistContext";
+import { BackToTop } from "@/components/ui/back-to-top";
 
 export default function ArtistProfilePage() {
   const { activeTab, isEditing } = useArtist();
@@ -47,6 +48,7 @@ export default function ArtistProfilePage() {
           )}
         </motion.div>
       </main>
+      <BackToTop />
     </>
   );
 }

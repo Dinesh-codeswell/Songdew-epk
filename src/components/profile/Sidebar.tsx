@@ -119,22 +119,37 @@ export function Sidebar() {
               </button>
             )}
           </div>
-          <div className={`flex ${isEditing ? 'flex-col gap-4' : 'flex-row flex-wrap gap-8 justify-between'}`}>
+          <div className={`${isEditing ? 'flex flex-col gap-4' : 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8'}`}>
             <div className="flex items-center gap-3 text-songdew-text font-body text-[15px]">
-              <Mail className="w-5 h-5 text-songdew-gray" />
-              <a href={`mailto:${artist.contact.email}`} className="hover:text-songdew-blue transition-colors">
-                {artist.contact.email}
-              </a>
+              <div className="w-10 h-10 rounded-full bg-songdew-blue/5 flex items-center justify-center flex-shrink-0">
+                <Mail className="w-5 h-5 text-songdew-blue" />
+              </div>
+              <div className="flex flex-col">
+                <span className="text-[11px] text-songdew-gray font-heading font-semibold uppercase tracking-wider">Email</span>
+                <a href={`mailto:${artist.contact.email}`} className="hover:text-songdew-blue transition-colors">
+                  {artist.contact.email}
+                </a>
+              </div>
             </div>
             <div className="flex items-center gap-3 text-songdew-text font-body text-[15px]">
-              <Phone className="w-5 h-5 text-songdew-gray" />
-              <span>{artist.contact.phone}</span>
+              <div className="w-10 h-10 rounded-full bg-songdew-blue/5 flex items-center justify-center flex-shrink-0">
+                <Phone className="w-5 h-5 text-songdew-blue" />
+              </div>
+              <div className="flex flex-col">
+                <span className="text-[11px] text-songdew-gray font-heading font-semibold uppercase tracking-wider">Phone</span>
+                <span>{artist.contact.phone}</span>
+              </div>
             </div>
             <div className="flex items-center gap-3 text-songdew-text font-body text-[15px]">
-              <Globe className="w-5 h-5 text-songdew-gray" />
-              <a href={`https://${artist.contact.website}`} target="_blank" rel="noreferrer" className="hover:text-songdew-blue transition-colors flex items-center gap-1">
-                {artist.contact.website} <ExternalLink className="w-3 h-3 opacity-50" />
-              </a>
+              <div className="w-10 h-10 rounded-full bg-songdew-blue/5 flex items-center justify-center flex-shrink-0">
+                <Globe className="w-5 h-5 text-songdew-blue" />
+              </div>
+              <div className="flex flex-col">
+                <span className="text-[11px] text-songdew-gray font-heading font-semibold uppercase tracking-wider">Website</span>
+                <a href={`https://${artist.contact.website}`} target="_blank" rel="noreferrer" className="hover:text-songdew-blue transition-colors flex items-center gap-1">
+                  {artist.contact.website} <ExternalLink className="w-3 h-3 opacity-50" />
+                </a>
+              </div>
             </div>
           </div>
         </Card>
