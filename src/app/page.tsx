@@ -9,7 +9,7 @@ import { motion } from "framer-motion";
 import { useArtist } from "@/context/ArtistContext";
 
 export default function ArtistProfilePage() {
-  const { activeTab } = useArtist();
+  const { activeTab, isEditing } = useArtist();
 
   return (
     <>
@@ -19,28 +19,32 @@ export default function ArtistProfilePage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, ease: "easeOut" }}
-          className="flex flex-col lg:flex-row gap-8"
+          className={`flex ${isEditing ? 'flex-col lg:flex-row gap-8' : 'flex-col gap-12'}`}
         >
           {/* Main Content Area */}
           <div className="flex-1 flex flex-col min-w-0">
             <HeroHeader />
             
-            <div className="mt-8">
-              <Tabs />
-            </div>
+            {isEditing && (
+              <div className="mt-8">
+                <Tabs />
+              </div>
+            )}
 
             <ContentSections activeTab={activeTab} />
           </div>
 
-          {/* Right Sidebar */}
-          <div className="hidden lg:block">
+          {/* Sidebar / Bottom Contact Section */}
+          <div className={`${isEditing ? 'hidden lg:block' : 'w-full order-last'}`}>
             <Sidebar />
           </div>
           
-          {/* Mobile Sidebar (Shows at the bottom on smaller screens) */}
-          <div className="lg:hidden mt-8">
-            <Sidebar />
-          </div>
+          {/* Mobile Sidebar (Only in Edit mode) */}
+          {isEditing && (
+            <div className="lg:hidden mt-8">
+              <Sidebar />
+            </div>
+          )}
         </motion.div>
       </main>
     </>
