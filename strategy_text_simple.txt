@@ -1,0 +1,236 @@
+INTERNAL PRODUCT DOCUMENT
+Songdew · EPK Module
+Strategy & Timeline
+AUTHOR
+Dinesh — PM Intern
+MODULE
+Songdew Artist EPK
+DATE
+June 2026
+VERSION
+v1.0
+CONFIDENTIAL — INTERNAL USE ONLY
+Executive Summary
+This document outlines the full product strategy, phased execution plan, and launch timeline for the 
+Songdew EPK (Electronic Press Kit) Module
+. The EPK Module is the first major initiative in a broader platform transformation that positions Songdew as the professional identity layer for India's independent music ecosystem — 
+"Songdew for Artists, what LinkedIn is for Professionals."
+Core Objective
+Deliver a production-ready EPK module within 5.5 weeks that gives independent artists a single, shareable professional profile — and gives industry stakeholders (curators, labels, brands) a purpose-built discovery experience.
+27 Working Days
+End-to-end delivery
+14 Core Features
+P0 + P1 scope
+3 OKR Objectives
+Discovery · Friction · Conversion
+1. Problem Statement
+Songdew currently presents a single dashboard to two fundamentally different user types — working artists and industry professionals. This creates friction for both.
+1.1  Current State Gaps
+Artists and listeners/curators share the same dashboard navigation — wrong context for both
+The e-Press Kit is a sub-menu item buried inside an artist workstation; industry stakeholders cannot find it without guidance
+One URL (songdew.com/profile) tries to serve the working artist AND the curious curator — neither gets an optimal experience
+1.2 Pain
+ Points by Stakeholder
+Stakeholder
+Pain Point
+Impact
+Independent Artist
+Manages 5+ platforms with no unified professional presence
+High
+Festival Curator
+Spends hours vetting artists across low-fidelity links
+High
+Brand Manager
+No easy way to assess cultural fit or collaboration potential
+Medium
+Music Fan
+Discovers good music but cannot follow artist journeys
+Medium
+2. Vision & Core Strategy
+"Make Songdew for Artists what LinkedIn is for Professionals"
+2.1 Platform
+ Split: Two Distinct Experiences
+The EPK Module is the first step toward splitting Songdew into two purpose-built surfaces:
+Mode
+URL
+Primary Audience
+Core Purpose
+Artist Mode
+songdew.com/dashboard
+Independent Artists
+EPK builder, releases, analytics, promo tools
+Discovery Mode
+songdew.com/discover
+Fans, Labels, Curators, Brands
+Read-only EPK view, artist search, booking CTA
+2.2 Platform Analogy
+Platform
+Audience
+Value Proposition
+LinkedIn
+Working Professionals
+Professional credibility + networking + job discovery
+Dribble
+UI/UX Designers
+Portfolio showcase + skill discovery + client pitching
+Songdew EPK
+Music Artists
+Professional identity + industry discovery + booking
+3. User Personas
+Four core user profiles inform the EPK feature set and UX decisions. Developed via 2–3 user interviews and pattern-matching against existing Songdew artist data.
+Persona
+Role
+Primary Pain
+Core Need
+Quote
+Independent Artist
+Singer / Producer / Band
+Manages 5+ platforms, no unified presence
+One link for music, press, booking, story
+"Send one link and be taken seriously"
+Festival Curator
+A&R / Talent Scout
+Hours vetting artists across low-fidelity links
+Evaluate stage history, press, music in < 60 seconds
+"Show me stage experience and I'll book"
+Brand Manager
+Marketing / Collab Lead
+No way to assess cultural fit or collab potential
+Social reach, press, professional enquiry type
+"Does this artist match our brand?"
+Music Fan
+Listener / Follower
+Discovers good music but can't follow artist journeys
+Discovery feed, follow artists, new releases
+"Follow them like I follow on Instagram"
+4. Feature Scope & Priority Matrix
+14 features scoped and prioritised using MoSCoW methodology. P0 features are launch blockers; P1 features ship with v1.0.
+ID
+Feature
+Priority
+Category
+F-01
+Dual-Mode Interface (Edit vs View)
+P0 — Must Have
+Launch Blocker
+F-02
+Single-Page Portfolio Layout (View Mode)
+P0 — Must Have
+Launch Blocker
+F-03
+Artist Hero Header (Banner + Avatar)
+P0 — Must Have
+Launch Blocker
+F-04
+Social Links Row + Edit Modal
+P0 — Must Have
+Launch Blocker
+F-05
+Section Visibility Toggle (Hide/Unhide)
+P0 — Must Have
+Launch Blocker
+F-06
+Music Section (Discography + Tracks)
+P0 — Must Have
+Launch Blocker
+F-07
+Gallery (Videos + Photos)
+P0 — Must Have
+Launch Blocker
+F-08
+Contact Info Grid + Edit Modal
+P0 — Must Have
+Launch Blocker
+F-09
+Dynamic Profile Strength Sidebar
+P1 — Should Have
+Enhancement
+F-10
+Live Performances Timeline
+P1 — Should Have
+Enhancement
+F-11
+In Press Section
+P1 — Should Have
+Enhancement
+F-12
+Business Enquiries Section
+P1 — Should Have
+Enhancement
+F-13
+Downloadable EPK Assets
+P1 — Should Have
+Enhancement
+F-14
+Manage Sections Modal (Bulk Visibility)
+P1 — Should Have
+Enhancement
+5. Market Research & Competitive Landscape
+Research conducted over 2 days using AI-assisted synthesis (Perplexity, Gemini) and direct platform analysis.
+5.1 Market Context
+70,000+
+Artists on Songdew
+5+
+Platforms per artist
+60 sec
+Target curator eval time
+0
+Unified EPK tools in India
+5.2  Competitor
+ Analysis
+Platform
+Type
+EPK?
+India?
+Gap Identified
+Linktree
+Link aggregator
+No
+Yes
+No media, no credibility, no booking flow
+Spotify for Artists
+Analytics tool
+No
+Yes
+No EPK, no press, no industry targeting
+Bandcamp
+Music store
+No
+No
+Commerce-first; lacks identity tools
+SoundBetter
+Marketplace
+No
+No
+Services marketplace, not an EPK
+Sonicbids
+EPK tool
+Yes
+No
+US-focused, expensive, outdated UX
+Songdew EPK
+Full suite
+Yes
+Yes
+Fills all identified gaps — our opportunity
+6. Project Phases — 6-Phase Execution Plan
+The EPK Module is delivered in 6 sequential phases over approximately 5.5 weeks.
+Phase
+Name
+Duration
+Key Output
+01
+Market Research & Competitor Analysis
+2 days
+Competitive Landscape Report + Opportunity Matrix
+02
+User Personas & Jobs-to-be-Done
+1 day
+4 Persona Canvases + JTBD Map
+03
+Feature Listing & Priority Matrix
+2 days
+Feature Registry + MoSCoW Table + Scope Sign-off
+04
+UX / UI Design Sprint
+1 week

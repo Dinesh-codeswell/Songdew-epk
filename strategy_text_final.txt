@@ -1,0 +1,536 @@
+INTERNAL PRODUCT DOCUMENT
+Songdew · EPK Module
+Strategy & Timeline
+AUTHOR
+Dinesh — PM Intern
+MODULE
+Songdew Artist EPK
+DATE
+June 2026
+VERSION
+v1.0
+CONFIDENTIAL — INTERNAL USE ONLY
+Executive Summary
+This document outlines the full product strategy, phased execution plan, and launch timeline for the 
+Songdew EPK (Electronic Press Kit) Module
+. The EPK Module is the first major initiative in a broader platform transformation that positions Songdew as the professional identity layer for India's independent music ecosystem — 
+"Songdew for Artists, what LinkedIn is for Professionals."
+Core Objective
+Deliver a production-ready EPK module within 5.5 weeks that gives independent artists a single, shareable professional profile — and gives industry stakeholders (curators, labels, brands) a purpose-built discovery experience.
+27 Working Days
+End-to-end delivery
+14 Core Features
+P0 + P1 scope
+3 OKR Objectives
+Discovery · Friction · Conversion
+1. Problem Statement
+Songdew currently presents a single dashboard to two fundamentally different user types — working artists and industry professionals. This creates friction for both.
+1.1  Current State Gaps
+Artists and listeners/curators share the same dashboard navigation — wrong context for both
+The e-Press Kit is a sub-menu item buried inside an artist workstation; industry stakeholders cannot find it without guidance
+One URL (songdew.com/profile) tries to serve the working artist AND the curious curator — neither gets an optimal experience
+1.2 Pain
+ Points by Stakeholder
+Stakeholder
+Pain Point
+Impact
+Independent Artist
+Manages 5+ platforms with no unified professional presence
+High
+Festival Curator
+Spends hours vetting artists across low-fidelity links
+High
+Brand Manager
+No easy way to assess cultural fit or collaboration potential
+Medium
+Music Fan
+Discovers good music but cannot follow artist journeys
+Medium
+2. Vision & Core Strategy
+"Make Songdew for Artists what LinkedIn is for Professionals"
+2.1 Platform
+ Split: Two Distinct Experiences
+The EPK Module is the first step toward splitting Songdew into two purpose-built surfaces:
+Mode
+URL
+Primary Audience
+Core Purpose
+Artist Mode
+songdew.com/dashboard
+Independent Artists
+EPK builder, releases, analytics, promo tools
+Discovery Mode
+songdew.com/discover
+Fans, Labels, Curators, Brands
+Read-only EPK view, artist search, booking CTA
+2.2 Platform Analogy
+Platform
+Audience
+Value Proposition
+LinkedIn
+Working Professionals
+Professional credibility + networking + job discovery
+Dribble
+UI/UX Designers
+Portfolio showcase + skill discovery + client pitching
+Songdew EPK
+Music Artists
+Professional identity + industry discovery + booking
+3. User Personas
+Four core user profiles inform the EPK feature set and UX decisions. Developed via 2–3 user interviews and pattern-matching against existing Songdew artist data.
+Persona
+Role
+Primary Pain
+Core Need
+Quote
+Independent Artist
+Singer / Producer / Band
+Manages 5+ platforms, no unified presence
+One link for music, press, booking, story
+"Send one link and be taken seriously"
+Festival Curator
+A&R / Talent Scout
+Hours vetting artists across low-fidelity links
+Evaluate stage history, press, music in < 60 seconds
+"Show me stage experience and I'll book"
+Brand Manager
+Marketing / Collab Lead
+No way to assess cultural fit or collab potential
+Social reach, press, professional enquiry type
+"Does this artist match our brand?"
+Music Fan
+Listener / Follower
+Discovers good music but can't follow artist journeys
+Discovery feed, follow artists, new releases
+"Follow them like I follow on Instagram"
+4. Feature Scope & Priority Matrix
+14 features scoped and prioritised using MoSCoW methodology. P0 features are launch blockers; P1 features ship with v1.0.
+ID
+Feature
+Priority
+Category
+F-01
+Dual-Mode Interface (Edit vs View)
+P0 — Must Have
+Launch Blocker
+F-02
+Single-Page Portfolio Layout (View Mode)
+P0 — Must Have
+Launch Blocker
+F-03
+Artist Hero Header (Banner + Avatar)
+P0 — Must Have
+Launch Blocker
+F-04
+Social Links Row + Edit Modal
+P0 — Must Have
+Launch Blocker
+F-05
+Section Visibility Toggle (Hide/Unhide)
+P0 — Must Have
+Launch Blocker
+F-06
+Music Section (Discography + Tracks)
+P0 — Must Have
+Launch Blocker
+F-07
+Gallery (Videos + Photos)
+P0 — Must Have
+Launch Blocker
+F-08
+Contact Info Grid + Edit Modal
+P0 — Must Have
+Launch Blocker
+F-09
+Dynamic Profile Strength Sidebar
+P1 — Should Have
+Enhancement
+F-10
+Live Performances Timeline
+P1 — Should Have
+Enhancement
+F-11
+In Press Section
+P1 — Should Have
+Enhancement
+F-12
+Business Enquiries Section
+P1 — Should Have
+Enhancement
+F-13
+Downloadable EPK Assets
+P1 — Should Have
+Enhancement
+F-14
+Manage Sections Modal (Bulk Visibility)
+P1 — Should Have
+Enhancement
+5. Market Research & Competitive Landscape
+Research conducted over 2 days using AI-assisted synthesis (Perplexity, Gemini) and direct platform analysis.
+5.1 Market Context
+70,000+
+Artists on Songdew
+5+
+Platforms per artist
+60 sec
+Target curator eval time
+0
+Unified EPK tools in India
+5.2  Competitor
+ Analysis
+Platform
+Type
+EPK?
+India?
+Gap Identified
+Linktree
+Link aggregator
+No
+Yes
+No media, no credibility, no booking flow
+Spotify for Artists
+Analytics tool
+No
+Yes
+No EPK, no press, no industry targeting
+Bandcamp
+Music store
+No
+No
+Commerce-first; lacks identity tools
+SoundBetter
+Marketplace
+No
+No
+Services marketplace, not an EPK
+Sonicbids
+EPK tool
+Yes
+No
+US-focused, expensive, outdated UX
+Songdew EPK
+Full suite
+Yes
+Yes
+Fills all identified gaps — our opportunity
+6. Project Phases — 6-Phase Execution Plan
+The EPK Module is delivered in 6 sequential phases over approximately 5.5 weeks.
+Phase
+Name
+Duration
+Key Output
+01
+Market Research & Competitor Analysis
+2 days
+Competitive Landscape Report + Opportunity Matrix
+02
+User Personas & Jobs-to-be-Done
+1 day
+4 Persona Canvases + JTBD Map
+03
+Feature Listing & Priority Matrix
+2 days
+Feature Registry + MoSCoW Table + Scope Sign-off
+04
+UX / UI Design Sprint
+1 week
+Wireframes → Hi-Fi Mockups → Dev Handoff (Figma)
+05
+Development (3 Sprints)
+2.5 weeks
+14 features, full test coverage, Vitest CI
+06
+QA + Stakeholder Review + Launch
+3 days
+Production deploy + Songdew Pro bundle
+6.1  Design
+ Sprint Breakdown (Phase 4 — 1 Week)
+Day
+Focus
+Deliverables
+Day 1
+Wireframes
+Artist Hero + banner layout, tab navigation, single-page scroll wireframe
+Day 2
+Design System
+Outfit/Poppins typography, #007BFF palette, neumorphic card system, Lucide icons
+Day 3
+Hi-Fi: Artist Mode
+Hero header, section cards (Music, Gallery), edit modals, Profile Strength sidebar
+Day 4
+Hi-Fi: View Mode
+Public EPK scroll layout, contact grid, Business Enquiries, mobile breakpoints
+Day 5
+Dev Handoff
+Figma component library, CSS variables export, redlines, stakeholder prototype
+6.2  Development
+ Sprint Breakdown (Phase 5 — 2.5 Weeks)
+Sprint
+Days
+Features
+Sprint 1
+Days 1–5
+ArtistContext + state management, Navbar Edit/View toggle, Hero Header (Banner + Avatar), Social Links row + modals, Tabs navigation
+Sprint 2
+Days 6–10
+Story Section + bio editor, Music Section (tracks + releases), Gallery (videos + photos), Section Visibility toggle, Manage Sections modal
+Sprint 3
+Days 11–12
+Achievements, Press, Assets, Business Enquiries section, Sidebar + contact edit modal, Profile Strength gamification, Back-to-top + toast system
+Testing (throughout): 
+Vitest + @testing-library/react  |  Unit tests for Context  |  Component tests for Edit Mode 
+|  Lighthouse
+ ≥ 90
+7. Master Timeline — 27 Working Days
+Day-by-day schedule across 5.5 weeks. Each row shows the task, phase category, duration, and start/end days.
+Task
+Phase
+Start
+Duration
+End Day
+Market Research
+Research
+Day 1
+2 days
+Day 2
+Competitor Analysis
+Research
+Day 1
+2 days
+Day 2
+User Personas (4)
+Research
+Day 3
+1 day
+Day 3
+Feature Listing
+Strategy
+Day 4
+1 day
+Day 4
+Priority Matrix
+Strategy
+Day 5
+1 day
+Day 5
+Wireframes
+Design
+Day 6
+1 day
+Day 6
+Design System
+Design
+Day 7
+1 day
+Day 7
+Hi-Fi Mockups
+Design
+Day 8
+2 days
+Day 9
+Dev Handoff
+Design
+Day 10
+1 day
+Day 10
+Sprint 1 — Core
+Development
+Day 11
+5 days
+Day 15
+Sprint 2 — Sections
+Development
+Day 16
+5 days
+Day 20
+Sprint 3 — Polish
+Development
+Day 21
+2 days
+Day 22
+QA + Bugfix
+QA
+Day 23
+2 days
+Day 24
+Stakeholder Review
+QA
+Day 25
+1 day
+Day 25
+Soft Launch (Songdew Pro)
+Launch
+Day 26
+2 days
+Day 27
+7.1 Why These Timelines Are Realistic
+AI-assisted tooling and modern frameworks substantially compress traditional estimates:
+Task
+Our Estimate
+Traditional
+Reason for Compression
+Market Research
+2 days
+5–7 days
+Perplexity/Gemini synthesise 10 competitors in hours, not days
+User Personas
+1 day
+3–5 days
+2–3 user calls + pattern-match against existing Songdew artist data
+UX Wireframes
+1 day
+3–4 days
+Low-fi sketches + Figma rapid wireframing with pre-defined design system
+Hi-Fi Design
+3 days
+1–2 weeks
+Songdew design system (
+colors
+, fonts, shadows) is pre-defined; component-based
+Dev (per feature)
+0.5–1 day
+2–3 days
+Next.js + Tailwind + React Context = pre-solved infrastructure; focus on logic
+Unit Testing
+Ongoing
+2–3 days
+Vitest + Testing Library makes TDD fast; tests written alongside features
+QA + Review
+2–3 days
+1 week
+Lighthouse automated audits + stakeholder review on pre-built prototype
+8. Success Metrics — OKRs
+Three objectives with measurable Key Results, directly tied to discovery, stakeholder friction, and booking conversion.
+North Star Metric: 
+% of artists reaching 'Discovery Ready' status within 48 hours of EPK sign-up
+O1: Drive Profile Completion
+60%+ artists reach 'Discovery Ready' (≥80% profile strength) within 48h of signup
+35% of active users reach 100% Profile Strength within 90 days
+55% of artists add ≥1 release in first session
+O2: Reduce Stakeholder Friction
+Avg. time-on-profile (curator segment) ≥ 90 seconds
+Curator survey: 50% reduction in vetting time vs. pre-EPK baseline
+Bounce rate from profile pages (curator segment) < 40%
+O3: Drive Booking Conversions
+'Business Enquiry' clicks ≥ 12 per 1,000 profile views
+EPK Asset downloads ≥ 8 per 1,000 profile views
+Booking enquiries via EPK: +30% month-over-month for 3 consecutive months
+9. Risks & Mitigations
+Risk
+Severity
+Phase
+Mitigation
+Blob URL expiry on browser reload
+Medium
+Dev
+v1: Show re-upload prompt. v2: Migrate to S3/Cloudinary CDN upload on save.
+localStorage 5MB cap exceeded (media-rich)
+Medium
+Dev
+Optimise serialisation; defer large assets to API-backed persistence in v2.
+Hydration mismatch (Next.js + Framer Motion)
+Low
+Dev
+suppressHydrationWarning
+ in 
+layout.tsx
+. Monitor edge cases. Defer non-critical animations.
+Legacy artist data migration (
+hiddenSections
+)
+Low
+Dev
+ArtistProvider
+ defaults 
+hiddenSections
+ to []. Backward-compatible. No migration needed.
+4K asset load time > 2s
+High
+Launch
+Lazy-load Assets section. next/image optimisation. File size preview before download trigger.
+Design QA overrun (alignment issues)
+Low
+Design
+Framer Motion layout system handles alignment. 1 dedicated QA day built into each sprint.
+Stakeholder review requiring major redesign
+Medium
+Review
+Prototype shared at Day 10 for early feedback. Iterate before dev sprint begins.
+10. Technology Stack
+Layer
+Technology
+Rationale
+Framework
+Next.js 16 (App Router)
+Server components, file-based routing, image optimisation built-in
+State 
+Mgmt
+React Context (ArtistContext)
+Zero-dependency, sufficient scope for EPK data; avoids Redux overhead
+Styling
+Tailwind CSS v4
+Utility-first, design-token driven, no runtime overhead
+Animation
+Framer Motion
+Layout animations and edit-mode transitions with minimal code
+Icons
+Lucide React
+Consistent, tree-
+shakable
+ icon set aligned to Songdew brand
+Testing
+Vitest + @testing-library/react
+Fast unit/component tests; co-located with features
+CI / Perf
+Lighthouse CI (≥90 target)
+Automated performance, accessibility, and SEO audits on each PR
+Deploy
+Vercel
+Zero-config Next.js deployment with preview URLs per branch
+Research
+Perplexity + Gemini
+AI-assisted competitor research and synthesis
+Design
+Figma + 
+FigJam
+Component library, wireframes, dev handoff, stakeholder review
+11. Next Steps
+Upon approval of this document, the following actions will be initiated immediately:
+Step
+Action
+Owner
+Target
+1
+Approval — This doc + deck shared with team lead for sign-off. Feedback incorporated within 1 day.
+Team Lead
+Day 0
+2
+Kickoff
+ — Begin Market Research phase. Set up project board in Notion/Jira with sprint structure.
+Dinesh (PM)
+Day 1
+3
+Weekly Sync — 30-min weekly check-in to review progress, surface blockers, adjust timeline.
+Team Lead + PM
+Weekly
+4
+Day-10 Preview — Design prototype demo + stakeholder feedback session before dev sprint.
+Dinesh (PM)
+Day 10
+5
+Soft Launch — EPK v1.0 bundled with Songdew Pro. Campaign: 'Your EPK is your Passport to the Stage'.
+Dinesh (PM)
+Day 27
+Prepared by: 
+Dinesh  ·
+  PM 
+Intern  ·
+  Songdew
+Document: 
+Songdew EPK Module — Strategy & 
+Timeline  ·
+  June 
+2026  ·
+  v1.0
+Status: 
+PENDING APPROVAL
