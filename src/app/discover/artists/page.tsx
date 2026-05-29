@@ -78,11 +78,5 @@ function ArtistsPageContent() {
 }
 
 export default function ArtistsPage() {
-  return (
-    <DiscoveryLayout>
-      <ArtistsPageContent />
-    </DiscoveryLayout>
-  );
-}
-ntent />;
+  return <ArtistsPageContent />;
 }

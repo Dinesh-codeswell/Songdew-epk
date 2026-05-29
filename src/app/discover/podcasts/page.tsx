@@ -1,6 +1,5 @@
 "use client";
 
-import { DiscoveryLayout } from "@/components/discovery/DiscoveryLayout";
 import { ContentSection, MediaCard } from "@/components/discovery/MediaCard";
 import { Mic2, Play, Info } from "lucide-react";
 import { motion } from "framer-motion";
@@ -91,9 +90,5 @@ function PodcastsPageContent() {
 }
 
 export default function PodcastsPage() {
-  return (
-    <DiscoveryLayout>
-      <PodcastsPageContent />
-    </DiscoveryLayout>
-  );
+  return <PodcastsPageContent />;
 }

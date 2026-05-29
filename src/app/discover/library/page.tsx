@@ -1,6 +1,5 @@
 "use client";
 
-import { DiscoveryLayout } from "@/components/discovery/DiscoveryLayout";
 import { ContentSection, MediaCard } from "@/components/discovery/MediaCard";
 import { Library, Clock, Music } from "lucide-react";
 import { useDiscoveryTheme } from "@/context/DiscoveryThemeContext";
@@ -79,9 +78,5 @@ function LibraryPageContent() {
 }
 
 export default function LibraryPage() {
-  return (
-    <DiscoveryLayout>
-      <LibraryPageContent />
-    </DiscoveryLayout>
-  );
+  return <LibraryPageContent />;
 }

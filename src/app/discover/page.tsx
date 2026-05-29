@@ -88,11 +88,5 @@ function DiscoveryPageContent() {
 }
 
 export default function DiscoveryPage() {
-  return (
-    <DiscoveryLayout>
-      <DiscoveryPageContent />
-    </DiscoveryLayout>
-  );
-}
-ntent />;
+  return <DiscoveryPageContent />;
 }

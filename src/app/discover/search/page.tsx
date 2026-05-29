@@ -1,6 +1,5 @@
 "use client";
 
-import { DiscoveryLayout } from "@/components/discovery/DiscoveryLayout";
 import { ContentSection, MediaCard } from "@/components/discovery/MediaCard";
 import { Search, Filter } from "lucide-react";
 import { Button } from "@/components/ui/button";

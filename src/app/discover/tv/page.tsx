@@ -1,6 +1,5 @@
 "use client";
 
-import { DiscoveryLayout } from "@/components/discovery/DiscoveryLayout";
 import { Radio, PlayCircle, Star } from "lucide-react";
 import { motion } from "framer-motion";
 import { useDiscoveryTheme } from "@/context/DiscoveryThemeContext";
@@ -83,9 +82,5 @@ function SongdewTVPageContent() {
 }
 
 export default function SongdewTVPage() {
-  return (
-    <DiscoveryLayout>
-      <SongdewTVPageContent />
-    </DiscoveryLayout>
-  );
+  return <SongdewTVPageContent />;
 }

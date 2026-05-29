@@ -1,6 +1,5 @@
 "use client";
 
-import { DiscoveryLayout } from "@/components/discovery/DiscoveryLayout";
 import { Music2, Plus, Search, MoreHorizontal } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useDiscoveryTheme } from "@/context/DiscoveryThemeContext";
@@ -82,9 +81,5 @@ function CreatePlaylistPageContent() {
 }
 
 export default function CreatePlaylistPage() {
-  return (
-    <DiscoveryLayout>
-      <CreatePlaylistPageContent />
-    </DiscoveryLayout>
-  );
+  return <CreatePlaylistPageContent />;
 }

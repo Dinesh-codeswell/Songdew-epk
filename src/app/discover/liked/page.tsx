@@ -1,6 +1,5 @@
 "use client";
 
-import { DiscoveryLayout } from "@/components/discovery/DiscoveryLayout";
 import { Heart, Play, Clock, MoreHorizontal } from "lucide-react";
 import { motion } from "framer-motion";
 import { useDiscoveryTheme } from "@/context/DiscoveryThemeContext";
@@ -93,9 +92,5 @@ function LikedSongsPageContent() {
 }
 
 export default function LikedSongsPage() {
-  return (
-    <DiscoveryLayout>
-      <LikedSongsPageContent />
-    </DiscoveryLayout>
-  );
+  return <LikedSongsPageContent />;
 }

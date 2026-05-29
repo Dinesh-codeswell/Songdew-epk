@@ -1,6 +1,5 @@
 "use client";
 
-import { DiscoveryLayout } from "@/components/discovery/DiscoveryLayout";
 import { ContentSection, MediaCard } from "@/components/discovery/MediaCard";
 import { Disc, PlayCircle } from "lucide-react";
 import { useDiscoveryTheme } from "@/context/DiscoveryThemeContext";
